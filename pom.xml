@@ -10,6 +10,9 @@
 
     <modules>
         <module>microservice-simple-provider-user</module>
+        <module>microservice-simple-consumer-movie</module>
+        <module>service-discover-eureka</module>
+        <module>microservice-provider-user</module>
     </modules>
 
 
