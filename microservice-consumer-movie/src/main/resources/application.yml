@@ -5,6 +5,8 @@ spring:
     name: microservice-consumer-movie
 eureka:
   client:
+    healthcheck:
+      enabled:true
     serviceUrl:
       defaultZone: http://admin:admin123@localhost:8761/eureka/,http://admin:admin123@localhost:8762/eureka/
   instance:
