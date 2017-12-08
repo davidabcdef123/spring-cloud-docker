@@ -30,3 +30,5 @@ eureka:
       defaultZone: http://admin:admin123@localhost:8761/eureka/,http://admin:admin123@localhost:8762/eureka/
   instance:
     prefer-ip-address: true
+    metadata-map:
+          my-metadata: metadata1       # 自定义的元数据，key/value都可以随便写。
