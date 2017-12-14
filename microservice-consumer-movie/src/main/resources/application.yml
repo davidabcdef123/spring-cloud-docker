@@ -11,3 +11,8 @@ eureka:
       defaultZone: http://admin:admin123@localhost:8761/eureka/,http://admin:admin123@localhost:8762/eureka/
   instance:
     prefer-ip-address: true
+
+#配置文件设置，负载均衡的方式，跟RibbonConfiguration效果一样
+microservice-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
