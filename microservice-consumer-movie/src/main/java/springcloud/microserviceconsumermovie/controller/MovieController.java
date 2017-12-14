@@ -9,12 +9,15 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import springcloud.microserviceconsumermovie.entity.User;
 import springcloud.microserviceconsumermovie.fegin.UserFeginClient;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Super.Sun on 2017/12/7.
@@ -54,8 +57,31 @@ public class MovieController {
         MovieController.LOGGER.info("{}:{}:{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
     }
 
-    @GetMapping("/fegin/user/{id}")
+   /* @GetMapping("/fegin/user/{id}")
     public User findById(@PathVariable long id) {
         return this.userFeginClient.findById(id);
+    }*/
+
+
+    @GetMapping("/get0")
+    public User get0(){
+        User user=new User();
+        user.setId((long) 1);
+        user.setUsername("张三");
+        //user=userFeginClient.get(user);
+        return user;
+    }
+
+    @GetMapping("/get1")
+    public User get1(){
+        return userFeginClient.get((long) 1,"张三");
+    }
+
+    @GetMapping("/get2")
+    public User get2(Long id,String usernam){
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", 1);
+        params.put("username", "张三");
+        return userFeginClient.get(params);
     }
 }

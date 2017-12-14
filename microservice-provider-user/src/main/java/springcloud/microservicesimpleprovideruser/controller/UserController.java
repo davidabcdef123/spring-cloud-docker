@@ -7,12 +7,14 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springcloud.microservicesimpleprovideruser.dao.UserRepository;
 import springcloud.microservicesimpleprovideruser.entity.User;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -34,6 +36,12 @@ public class UserController {
   @GetMapping("/user/instance")
   public List<ServiceInstance> showInfo(){
     return this.discoveryClient.getInstances("microservice-provider-user");
+  }
+
+
+  @GetMapping("/get")
+  public User get(User user) {
+    return user;
   }
 
   /*@GetMapping("auth/{id}")

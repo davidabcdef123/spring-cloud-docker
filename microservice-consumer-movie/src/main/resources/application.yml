@@ -16,3 +16,16 @@ eureka:
 microservice-provider-user:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+feign:
+  compression:
+    request:
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+        enable:true
+logging:
+  level:
+   springcloud.microserviceconsumermovie.fegin.UserFeginClient: DEBUG # 将Feign接口的日志级别设置成DEBUG，因为Feign的Logger.Level只对DEBUG作出响应。
+
+
