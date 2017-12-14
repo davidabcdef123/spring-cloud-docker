@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import springcloud.microserviceconsumermovie.entity.User;
+import springcloud.microserviceconsumermovie.fegin.UserFeginClient;
 
 import java.util.List;
 
@@ -32,6 +33,9 @@ public class MovieController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
+    @Autowired
+    UserFeginClient userFeginClient;
+
     @GetMapping("/user/{id}")
     public User findById(@PathVariable Long id) {
         //return this.restTemplate.getForObject("http://localhost:8000/" + id, User.class);
@@ -39,14 +43,19 @@ public class MovieController {
     }
 
     @GetMapping("/user/instance")
-    public List<ServiceInstance> showInfo(){
+    public List<ServiceInstance> showInfo() {
         return this.discoveryClient.getInstances("microservice-provider-user");
     }
 
     @GetMapping("/log-user-instance")
-    public void logUserInstance(){
+    public void logUserInstance() {
         ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-provider-user");
         // 打印当前选择的是哪个节点
-        MovieController.LOGGER.info("{}:{}:{}",serviceInstance.getServiceId(),serviceInstance.getHost(),serviceInstance.getPort());
+        MovieController.LOGGER.info("{}:{}:{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
+    }
+
+    @GetMapping("/fegin/user/{id}")
+    public User findById(@PathVariable long id) {
+        return this.userFeginClient.findById(id);
     }
 }
