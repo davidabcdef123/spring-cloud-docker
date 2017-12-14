@@ -1,5 +1,6 @@
 package springcloud.microserviceconsumermovie.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import jdk.internal.dynalink.linker.LinkerServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,10 +40,18 @@ public class MovieController {
     @Autowired
     UserFeginClient userFeginClient;
 
+    @HystrixCommand(fallbackMethod = "findByIdFallback")
     @GetMapping("/user/{id}")
     public User findById(@PathVariable Long id) {
         //return this.restTemplate.getForObject("http://localhost:8000/" + id, User.class);
         return this.restTemplate.getForObject("http://microservice-provider-user/" + id, User.class);
+    }
+
+    public User findByIdFallback(Long id) {
+        User user = new User();
+        user.setId(-1L);
+        user.setName("默认用户");
+        return user;
     }
 
     @GetMapping("/user/instance")
