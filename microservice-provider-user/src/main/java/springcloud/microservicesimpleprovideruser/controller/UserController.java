@@ -42,6 +42,7 @@ public class UserController {
 
   @GetMapping("/get")
   public User get(User user) {
+    System.out.println("@@@");
     return user;
   }
 
