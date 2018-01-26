@@ -33,6 +33,7 @@ public class UserController {
     return findOne;
   }
 
+  //获取系统信息
   @GetMapping("/user/instance")
   public List<ServiceInstance> showInfo(){
     return this.discoveryClient.getInstances("microservice-provider-user");
