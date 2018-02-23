@@ -16,7 +16,8 @@ import java.util.Map;
  * Created by Super.Sun on 2017/12/14.
  */
 
-@FeignClient(name = "microservice-provider-user",fallback = FeignClientFallback.class)
+@FeignClient(name = "microservice-provider-user",fallbackFactory = FeignClientFallbackFactory.class)
+//@FeignClient(name = "microservice-provider-user",fallback = FeignClientFallback.class)
 //@FeignClient(name = "microservice-provider-user")
 public interface UserFeginClient {
 
