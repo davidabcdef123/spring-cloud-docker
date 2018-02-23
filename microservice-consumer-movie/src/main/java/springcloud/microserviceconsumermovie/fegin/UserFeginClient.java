@@ -16,13 +16,13 @@ import java.util.Map;
  * Created by Super.Sun on 2017/12/14.
  */
 
-@FeignClient(name = "microservice-provider-user",configuration = FeginConfigration.class,fallback = FeignClientFallback.class)
+@FeignClient(name = "microservice-provider-user",fallback = FeignClientFallback.class)
 //@FeignClient(name = "microservice-provider-user")
 public interface UserFeginClient {
 
     //未使用fegin配置的时候
-    /*@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User findById(@PathVariable("id") Long id);*/
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public User findById(@PathVariable("id") Long id);
 
     /**
      * 使用feign自带的注解@RequestLine

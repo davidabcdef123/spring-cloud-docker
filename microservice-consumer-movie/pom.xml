@@ -53,13 +53,13 @@
 		</dependency>
 	</dependencies>
 
-	<!-- 引入spring cloud的依赖 -->
+	<!-- 引入spring cloud的依赖 Edgware.RELEASE有bug对feign的hy不支持-->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Edgware.RELEASE</version>
+				<version>Camden.SR4</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

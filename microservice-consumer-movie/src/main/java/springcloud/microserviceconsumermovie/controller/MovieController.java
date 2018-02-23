@@ -66,10 +66,10 @@ public class MovieController {
         MovieController.LOGGER.info("{}:{}:{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
     }
 
-   /* @GetMapping("/fegin/user/{id}")
+    @GetMapping("/fegin/user/{id}")
     public User findById(@PathVariable long id) {
         return this.userFeginClient.findById(id);
-    }*/
+    }
 
 
     @GetMapping("/get0")

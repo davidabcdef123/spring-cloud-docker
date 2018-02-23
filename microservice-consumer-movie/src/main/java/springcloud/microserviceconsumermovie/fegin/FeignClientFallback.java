@@ -11,6 +11,14 @@ import java.util.Map;
 @Component
 public class FeignClientFallback implements UserFeginClient{
     @Override
+    public User findById(Long id) {
+        User user = new User();
+        user.setId(-1L);
+        user.setUsername("默认用户");
+        return user;
+    }
+
+    @Override
     public User get(Long id, String username) {
         User user = new User();
         user.setId(-1L);
