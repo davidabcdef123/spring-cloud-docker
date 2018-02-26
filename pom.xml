@@ -17,6 +17,7 @@
         <module>service-discover-eureka-ha</module>
         <module>microservice-hystrix-dashboard</module>
         <module>microservice-turbine</module>
+        <module>microservice-gateway-zuul</module>
     </modules>
 
 
