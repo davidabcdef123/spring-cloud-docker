@@ -51,6 +51,7 @@ public class UserFallbackProvider implements ZuulFallbackProvider {
             @Override
             public int getRawStatusCode() throws IOException {
                 // 数字类型的状态码，本例返回的其实就是200，详见HttpStatus
+                System.out.println("123");
                 return this.getStatusCode().value();
             }
 
