@@ -10,4 +10,8 @@ eureka:
   instance:
     prefer-ip-address: true
 zuul:
-  ignored-services: microservice-provider-user,microservice-consumer-movie
+  #禁用自带的过滤器
+  sendResponseFilter:
+    post:
+      disable: true
+ # ignored-services: microservice-provider-user,microservice-consumer-movie
